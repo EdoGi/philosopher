@@ -7,7 +7,8 @@ SRCS		=	\
 				philosopher.c \
 				parser.c \
 				finisher.c \
-				utils.c \
+				utiliser.c \
+				initilizer.c \
 				\
 
 SRCS_B	=		\

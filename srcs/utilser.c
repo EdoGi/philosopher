@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utilser.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 20:05:51 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 14:10:43 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:43:37 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosopher.h"
-
-// TODO : clean all function ! free pthread and structure; finish_diner;
 
 int	ft_atoi(const char *nptr)
 {
@@ -53,4 +51,9 @@ int	ft_isspace(int c)
 	if (((signed)c >= 9 && (signed)c <= 13) || (signed)c == 32)
 		return (1);
 	return (0);
+}
+
+void	printf_errors(char *str)
+{
+	printf("%sERROR: %s\n%s", RED_BLINK, str, RESET);
 }

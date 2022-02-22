@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 17:17:36 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:30:39 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 
 */
 
+// TODO : Check why I have to write all path to include
 #include "../include/philosopher.h"
 
 int	routine(t_philo *philo)
@@ -47,76 +48,36 @@ int	routine(t_philo *philo)
 	// TODO : Create routine
 	printf("Philo %d is thinking", philo->id);
 	usleep(philo->ctxt->time_sleep);
-	pthread_mutex_lock(philo->right_fork);
-	pthread_mutex_lock(philo->left_fork);
+	pthread_mutex_lock(&philo->right_fork);
+	pthread_mutex_lock(&philo->left_fork);
 	printf("Philo %d is eating", philo->id);
 	usleep(philo->ctxt->time_eat);
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(&philo->right_fork);
+	pthread_mutex_unlock(&philo->left_fork);
 	printf("Philo %d is sleeping", philo->id);
 	usleep(philo->ctxt->time_sleep);
 }
 
-int	init_context(int ac, char **av, t_data *context)
-{
-	memset(context, 0, sizeof(context));
-	if (context_parse(ac, av, &context))
-	{
-		printf("Wrong Context !\n\n");
-		usage();
-		return (1);
-	}
-	if (pthread_mutex_init(&context->forks, NULL) != 0)
-	{
-		printf("mutex init failed\n");
-		return (1);
-	}
-	return (0);
-}
-
-int	init_philo(int ac, char **av, t_data *context)
-{
-
-}
-
 int	main(int ac, char **av)
 {
-	// FIXME : put thread inside t_data ?
-	pthread_t		*thread;
 	t_data			context;
 	int				i;
 
 	if (init_context(ac, av, &context))
 	{
-		printf("error : init context failed\n");
+		printf_error("initializer failed");
 		return (finish_diner(&context));
 	}
-	// TODO : Init Pthread
-	if (init_philo(ac, av, &thread))
-	{
-		printf("error : init thread failed\n");
-		return (finish_diner(&context));
-	}
-	// FIXME : create to update
 	i = 0;
+	// FIXME : update my join thread
 	while (i < context.num_philo)
 	{
-		if (pthread_create(&thread[i], NULL, &routine, &context.philo[i]) != 0)
+		if (pthread_join (context.thrd[i], NULL) != 0)
 		{
-			printf("error : pthread create");
-		return (finish_diner(&context));
+			printf_error("pthread join");
+			return (finish_diner(&context));
 		}
 		i++;
-	}
-	i = 0;
-	// FIXME : join to update
-	while (i < context.num_philo)
-	{
-		if (pthread_join (thread, NULL) != 0)
-		{
-			printf("error : pthread join");
-		return (finish_diner(&context));
-		}
 	}
 	finish_diner(&context);
 	return (0);

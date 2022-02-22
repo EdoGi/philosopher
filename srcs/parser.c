@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:21:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 14:44:21 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:51:40 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // TODO : Parsing
 
-int	context_parse(int ac, char **av, t_data *context)
+int	parse_context(int ac, char **av, t_data *context)
 {
 	if (ac == 5 || ac == 6)
 	{
