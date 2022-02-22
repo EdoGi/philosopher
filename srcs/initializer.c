@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:31:41 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 19:32:01 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/02/22 20:05:11 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,23 @@ int	init_philo(t_data *context)
 	context->philo = malloc(sizeof(t_philo) * context->num_philo);
 	if (context->philo == NULL)
 	{
-
+		printf_error("philo malloc failed");
+		return (1);
 	}
 	philo_set = context->philo;
+	memset(philo_set, 0, sizeof(philo_set));
 	i = 0;
 	while (i < context->num_philo)
 	{
+		philo_set[i].id = i + 1;
 		philo_set[i].right_fork = context->forks[i];
-		philo_set[i].left_fork = context->forks[i + 1];
+		if (context->num_philo > 1)
+			philo_set[i].left_fork = context->forks[(i + 1) \
+				% context->num_philo];
+		philo_set[i].ctxt = context;
+		i++;
 	}
+	return (0);
 }
 
 int	init_context(int ac, char **av, t_data *context)

@@ -6,13 +6,13 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 19:30:39 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:50:08 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* TODO : GENERAL
 	- Init all philo thread
-	- Attribute all philo thread to realtive fork
+	- Attribute all philo thread to relative fork
 	- Write function to get day time in UNIX time
 	- Write funtion to clean all
 
