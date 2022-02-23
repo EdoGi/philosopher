@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:49 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 19:34:28 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/02/23 12:43:06 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define RED "\033[1;31m"
 # define RED_BLINK "\033[1;5;31m"

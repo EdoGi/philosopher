@@ -6,13 +6,13 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:31:41 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 20:05:11 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/02/23 12:58:26 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosopher.h"
 
-// FIXME : update my create thread
+// FIXME : update my create thread with timeframe
 int	init_thread(t_data *context)
 {
 	int	i;
@@ -57,7 +57,7 @@ int	init_mutex(t_data *context)
 	return (0);
 }
 
-// FIXME: correct the init phil
+// FIXME: complete the init phil with timeframe
 int	init_philo(t_data *context)
 {
 	int		i;

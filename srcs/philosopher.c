@@ -6,13 +6,12 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 19:50:08 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/02/23 12:58:17 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* TODO : GENERAL
 	- Init all philo thread
-	- Attribute all philo thread to relative fork
 	- Write function to get day time in UNIX time
 	- Write funtion to clean all
 
@@ -40,12 +39,13 @@
 
 */
 
+// TODO : Create TIMEFRAME ! gettime + convert args in time
 // TODO : Check why I have to write all path to include
 #include "../include/philosopher.h"
 
+// TODO : Create routine
 int	routine(t_philo *philo)
 {
-	// TODO : Create routine
 	printf("Philo %d is thinking", philo->id);
 	usleep(philo->ctxt->time_sleep);
 	pthread_mutex_lock(&philo->right_fork);
@@ -58,6 +58,7 @@ int	routine(t_philo *philo)
 	usleep(philo->ctxt->time_sleep);
 }
 
+// FIXME : update my join thread : l.75
 int	main(int ac, char **av)
 {
 	t_data			context;
@@ -69,7 +70,6 @@ int	main(int ac, char **av)
 		return (finish_diner(&context));
 	}
 	i = 0;
-	// FIXME : update my join thread
 	while (i < context.num_philo)
 	{
 		if (pthread_join (context.thrd[i], NULL) != 0)
