@@ -4,11 +4,12 @@ SRCS_DIR	= ./srcs/
 SRCS_B_DIR	= ./srcs_bonus/
 
 SRCS		=	\
-				philosopher.c \
-				parser.c \
-				finisher.c \
-				utiliser.c \
-				initilizer.c \
+				philosopher.c	\
+				initializer.c	\
+				utiliser.c		\
+				finisher.c		\
+				parser.c		\
+				timer.c			\
 				\
 
 SRCS_B	=		\
