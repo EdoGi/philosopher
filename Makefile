@@ -6,6 +6,7 @@ SRCS_B_DIR	= ./srcs_bonus/
 SRCS		=	\
 				philosopher.c	\
 				initializer.c	\
+				routiniser.c	\
 				utiliser.c		\
 				finisher.c		\
 				parser.c		\

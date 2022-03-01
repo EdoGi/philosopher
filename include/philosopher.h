@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:49 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/23 13:24:11 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/01 22:38:16 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_data
 	pthread_t		*thrd;
 	pthread_mutex_t	*forks;
 	struct s_philo	*philo;
-	int				actime;
+	long int		start;
 }	t_data;
 
 // FIXME : Complete philo structure

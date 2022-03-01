@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:15:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/22 15:08:50 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/01 22:38:16 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,54 @@ void	usage(void)
 	printf(" <Optional:number_of_times_each_philosopher_must_eat>\n\n");
 }
 
+/* Add clean new mutex */
 void	finish_diner(t_data *context)
 {
-	if (pthread_mutex_destroy(&context->forks) != 0)
-		printf("mutex detroy failed\n");
+	int	i;
+
+	i = 0;
+	if (context && context->num_philo && context->forks)
+	{
+		while (i < context->num_philo)
+		{
+			if (pthread_mutex_destroy(&context->forks[i]) != 0)
+				printf("mutex detroy failed\n");
+			i++;
+		}
+		free(context->forks);
+	}
+	i = 0;
+	if (context && context->num_philo && context->philo)
+	{
+		while (i < context->num_philo)
+		{
+			memset(&context->philo[i], 0, sizeof(context->philo));
+			i++;
+		}
+		free(context->philo);
+	}
+	the_end(context);
+}
+
+void	the_end(t_data *context)
+{
+	int	i;
+
+	i = 0;
+	if (context && context->num_philo && context->thrd)
+	{
+		while (i < context->num_philo)
+		{
+			if (pthread_join (context->thrd[i], NULL) != 0)
+				printf_error("pthread join");
+			i++;
+		}
+	}
+	if (context)
+	{
+		memset(context, 0, sizeof(context));
+		free (context);
+		context = NULL;
+	}
+	exit (0);
 }

@@ -6,13 +6,12 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:31:41 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/23 13:15:35 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/01 22:38:18 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosopher.h"
 
-// FIXME : update my create thread with timeframe
 int	init_thread(t_data *context)
 {
 	int	i;
@@ -24,9 +23,10 @@ int	init_thread(t_data *context)
 		printf_error("thread malloc failed");
 		return (1);
 	}
+	context->start = get_time();
 	while (i < context->num_philo)
 	{
-		if (pthread_create(context->thrd[i], NULL, &routine, \
+		if (pthread_create(&context->thrd[i], NULL, &routine, \
 			&context->philo[i]) != 0)
 		{
 			printf_error("pthread create failed");

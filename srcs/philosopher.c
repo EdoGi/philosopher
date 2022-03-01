@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/23 12:58:17 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/01 21:58:48 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,45 +39,18 @@
 
 */
 
-// TODO : Create TIMEFRAME ! gettime + convert args in time
 // TODO : Check why I have to write all path to include
 #include "../include/philosopher.h"
-
-// TODO : Create routine
-int	routine(t_philo *philo)
-{
-	printf("Philo %d is thinking", philo->id);
-	usleep(philo->ctxt->time_sleep);
-	pthread_mutex_lock(&philo->right_fork);
-	pthread_mutex_lock(&philo->left_fork);
-	printf("Philo %d is eating", philo->id);
-	usleep(philo->ctxt->time_eat);
-	pthread_mutex_unlock(&philo->right_fork);
-	pthread_mutex_unlock(&philo->left_fork);
-	printf("Philo %d is sleeping", philo->id);
-	usleep(philo->ctxt->time_sleep);
-}
 
 // FIXME : update my join thread : l.75
 int	main(int ac, char **av)
 {
 	t_data			context;
-	int				i;
 
 	if (init_context(ac, av, &context))
 	{
 		printf_error("initializer failed");
-		return (finish_diner(&context));
-	}
-	i = 0;
-	while (i < context.num_philo)
-	{
-		if (pthread_join (context.thrd[i], NULL) != 0)
-		{
-			printf_error("pthread join");
-			return (finish_diner(&context));
-		}
-		i++;
+		return (the_end(&context));
 	}
 	finish_diner(&context);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:21:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/23 12:54:15 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/01 18:53:18 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	parse_error(int ac, char **av)
 	return (0);
 }
 
-// FIXME : What todo if num_eat == 0 ?
 int	parse_context(int ac, char **av, t_data *context)
 {
 	if (ac == 5 || ac == 6)
@@ -52,7 +51,15 @@ int	parse_context(int ac, char **av, t_data *context)
 		context->time_eat = ft_atoi(av[3]);
 		context->time_sleep = ft_atoi(av[4]);
 		if (ac == 6)
+		{
+			if (ft_atoi(av[5]) <= 0)
+			{
+				printf("Philosophers needs to eat at least once. \
+					It's better for the moral.\n");
+				return (1);
+			}
 			context->num_eat = ft_atoi(av[5]);
+		}
 		return (0);
 	}
 	return (1);

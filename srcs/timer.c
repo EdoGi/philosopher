@@ -6,13 +6,21 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:59:21 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/23 13:22:45 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/01 20:24:23 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosopher.h"
 
-int	get_time(void)
+/* TODO : Count time function since start
+	act_time - start_time = act_time ;
+*/
+int	time_counter()
+{
+	
+}
+
+long int	get_time(void)
 {
 	unsigned long		timestamp;
 	struct timeval		time;
