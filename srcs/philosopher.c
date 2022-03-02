@@ -6,15 +6,11 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/01 21:58:48 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/02 00:02:10 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* TODO : GENERAL
-	- Init all philo thread
-	- Write function to get day time in UNIX time
-	- Write funtion to clean all
-
 	philo are thread ;
 	they have relative forks(mutex);
 	for each I do routine :
@@ -42,7 +38,6 @@
 // TODO : Check why I have to write all path to include
 #include "../include/philosopher.h"
 
-// FIXME : update my join thread : l.75
 int	main(int ac, char **av)
 {
 	t_data			context;
@@ -52,6 +47,8 @@ int	main(int ac, char **av)
 		printf_error("initializer failed");
 		return (the_end(&context));
 	}
+	while (context.itsok == 0)
+		context.itsok = is_it_ok(&context);
 	finish_diner(&context);
 	return (0);
 }
