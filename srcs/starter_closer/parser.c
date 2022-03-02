@@ -6,11 +6,11 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:21:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/01 18:53:18 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/02 02:03:09 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosopher.h"
+#include "../../include/philosopher.h"
 
 void	printf_errors(char *str)
 {

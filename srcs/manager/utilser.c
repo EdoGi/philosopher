@@ -6,11 +6,11 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 20:05:51 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/02/23 12:50:40 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/02 02:03:19 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosopher.h"
+#include "../../include/philosopher.h"
 
 int	ft_atoi(const char *nptr)
 {

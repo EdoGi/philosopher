@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:49 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/01 23:47:02 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/02 02:01:47 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,48 @@ typedef struct s_philo
 	pthread_mutex_t	right_fork;
 	t_data			*ctxt;
 }	t_philo;
+
+int			main(int ac, char **av);
+/* MANAGER */
+// timer
+long int	get_time(void);
+// writer
+void		writer(char *emoji, char *txt, t_philo *philo, t_data *context);
+// utiliser
+int			ft_atoi(const char *nptr);
+int			ft_isnumber(char *nbr);
+int			ft_isdigit(int c);
+int			ft_isspace(int c);
+int			ft_strlen(char *str);
+
+/* STARTER_CLOSER */
+// finisher
+void		usage(void);
+void		finish_diner(t_data *context);
+int			the_end(t_data *context);
+
+// initializer
+int			init_context(int ac, char **av, t_data *context);
+int			init_mutex(t_data *context);
+int			init_philo(t_data *context);
+int			init_thread(t_data *context);
+// parser
+void		printf_error(char *str);
+int			parse_error(int ac, char **av);
+int			parse_context(int ac, char **av, t_data *context);
+
+/* USER */
+// checker
+int			check_death(t_philo philo);
+int			check_eat(t_philo *philo);
+int			is_it_ok(t_data *context);
+// eater
+void		lock_forks(t_philo *philo);
+void		unlock_forks(t_philo *philo);
+int			eating(t_philo *philo);
+// routiniser
+int			routine(t_philo *philo);
+int			thinking(t_philo *philo);
+int			sleeping(t_philo *philo);
 
 #endif

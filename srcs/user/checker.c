@@ -6,11 +6,11 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 23:01:23 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/02 00:51:36 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/02 02:02:29 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosopher.h"
+#include "philosopher.h"
 
 int	check_death(t_philo philo)
 {
@@ -19,21 +19,10 @@ int	check_death(t_philo philo)
 
 	start = philo.ctxt->start;
 	starving = get_time() - philo.last_eat;
-	if (philo.last_eat == 0)
+	if (get_time() - philo.last_eat >= philo.ctxt->time_die)
 	{
-		if (get_time() - start >= philo.ctxt->time_die)
-		{
-			writer("\U0001F480", "died", &philo, &philo.ctxt);
-			return (1);
-		}	
-	}
-	else
-	{
-		if (get_time() - philo.last_eat >= philo.ctxt->time_die)
-		{
-			writer("\U0001F480", "died", &philo, &philo.ctxt);
-			return (1);
-		}
+		writer("\U0001F480", "died", &philo, &philo.ctxt);
+		return (1);
 	}
 	return (0);
 }

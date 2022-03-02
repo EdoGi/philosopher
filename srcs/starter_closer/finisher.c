@@ -6,11 +6,11 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:15:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/01 22:38:16 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/02 02:03:14 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosopher.h"
+#include "../../include/philosopher.h"
 
 // FIXME : Complete this function with all usages ;
 void	usage(void)
@@ -49,7 +49,7 @@ void	finish_diner(t_data *context)
 	the_end(context);
 }
 
-void	the_end(t_data *context)
+int	the_end(t_data *context)
 {
 	int	i;
 
@@ -70,4 +70,5 @@ void	the_end(t_data *context)
 		context = NULL;
 	}
 	exit (0);
+	return (0);
 }
