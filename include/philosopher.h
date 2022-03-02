@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:49 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/01 22:38:16 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/01 23:47:02 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ typedef struct s_data
 	int				num_eat;
 	pthread_t		*thrd;
 	pthread_mutex_t	*forks;
+	// pthread_mutex_t	write;
 	struct s_philo	*philo;
 	long int		start;
+	int				itsok;
 }	t_data;
 
 // FIXME : Complete philo structure
@@ -49,7 +51,7 @@ typedef struct s_philo
 {
 	int				id;
 	int				num_eat;
-	int				starving;
+	long int		last_eat;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	right_fork;
 	t_data			*ctxt;
