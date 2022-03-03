@@ -18,5 +18,9 @@ void	writer(char *emoji, char *txt, t_philo *philo, t_data *context)
 
 	timestamp = get_time() - context->start;
 	if (context->itsok == 0)
+	{
+		pthread_mutex_lock(&context->mtx_write);
 		printf("%s %ld ms : Philo %d %s\n", emoji, timestamp, philo->id, txt);
+		pthread_mutex_unlock(&context->mtx_write);
+	}
 }

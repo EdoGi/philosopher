@@ -55,6 +55,12 @@ int	init_mutex(t_data *context)
 			return (1);
 		i++;
 	}
+	if (pthread_mutex_init(&context->mtx_write, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&context->mtx_meal, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&context->mtx_death, NULL) != 0)
+		return (1);
 	return (0);
 }
 

@@ -17,6 +17,7 @@ void	printf_error(char *str)
 	printf("%sERROR:%s %s\n%s", RED_BLINK, RESET, str, RESET);
 }
 
+// FIXME : if arg is "-    5" : shouldn't work
 int	parse_error(int ac, char **av)
 {
 	int	i;
@@ -31,9 +32,9 @@ int	parse_error(int ac, char **av)
 			return (1);
 		}
 		num = ft_atoi(av[i]);
-		if (num > INT_MAX || num < 0 || ft_strlen(av[i]) > 11)
+		if (num > INT_MAX || num <= 0 || ft_strlen(av[i]) > 11)
 		{
-			printf("=> %s is not a wrong digit\n", av[i]);
+			printf("=> %s is a wrong digit\n", av[i]);
 			return (1);
 		}
 		i++;

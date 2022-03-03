@@ -20,22 +20,21 @@ void	usage(void)
 	printf(" <Optional:number_of_times_each_philosopher_must_eat>\n\n");
 }
 
-/* Add clean new mutex */
-void	finish_diner(t_data *context)
+int	the_end(t_data *context)
+{
+	if (context)
+	{
+		memset(context, 0, sizeof(&context));
+		context = NULL;
+	}
+	exit (0);
+	return (0);
+}
+
+void	quit_table(t_data *context)
 {
 	int	i;
 
-	i = 0;
-	if (context && context->num_philo && context->forks)
-	{
-		while (i < context->num_philo)
-		{
-			if (pthread_mutex_destroy(&context->forks[i]) != 0)
-				printf("mutex detroy failed\n");
-			i++;
-		}
-		free(context->forks);
-	}
 	i = 0;
 	if (context && context->num_philo && context->philo)
 	{
@@ -49,7 +48,29 @@ void	finish_diner(t_data *context)
 	the_end(context);
 }
 
-int	the_end(t_data *context)
+/* Add clean new mutex */
+void	clear_table(t_data *context)
+{
+	int	i;
+
+	i = 0;
+	if (context && context->num_philo && context->forks)
+	{
+		while (i < context->num_philo)
+		{
+			if (pthread_mutex_destroy(&context->forks[i]) != 0)
+				printf("mutex detroy failed\n");
+			i++;
+		}
+		free(context->forks);
+		pthread_mutex_destroy(&context->mtx_meal);
+		pthread_mutex_destroy(&context->mtx_write);
+		pthread_mutex_destroy(&context->mtx_death);
+	}
+	quit_table(context);
+}
+
+void	finish_diner(t_data *context)
 {
 	int	i;
 
@@ -63,11 +84,5 @@ int	the_end(t_data *context)
 			i++;
 		}
 	}
-	if (context)
-	{
-		memset(context, 0, sizeof(&context));
-		context = NULL;
-	}
-	exit (0);
-	return (0);
+	clear_table(context);
 }

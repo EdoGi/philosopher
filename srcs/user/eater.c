@@ -12,6 +12,7 @@
 
 #include "philosopher.h"
 
+// TODO : PROTECT ALL MUTEXES LOCK and UNLOCK ! soudl return 0
 void	lock_forks(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->right_fork);
@@ -26,6 +27,17 @@ void	unlock_forks(t_philo *philo)
 	pthread_mutex_unlock(&philo->left_fork);
 }
 
+// TODO : WHY get_time here is writer return ???
+void	mtx_eating(t_philo *philo, int i)
+{
+	pthread_mutex_lock(&philo->ctxt->mtx_meal);
+	if (i == 1)
+		philo->last_eat = get_time();
+	if (i == 2)
+		philo->num_eat += 1;
+	pthread_mutex_unlock(&philo->ctxt->mtx_meal);
+}
+
 int	eating(t_philo *philo)
 {
 	long int	start;
@@ -35,9 +47,9 @@ int	eating(t_philo *philo)
 		return (1);
 	lock_forks(philo);
 	writer("\U0001F35D", "is eating", philo, philo->ctxt);
+	mtx_eating(philo, 1);
 	usleep(philo->ctxt->time_eat * 1000);
-	philo->num_eat += 1;
-	philo->last_eat = get_time();
 	unlock_forks(philo);
+	mtx_eating(philo, 2);
 	return (0);
 }

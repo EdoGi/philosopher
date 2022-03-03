@@ -12,16 +12,18 @@
 
 #include "philosopher.h"
 
-int	check_death(t_philo philo)
+int	check_death(t_philo *philo)
 {
 	long int	start;
 	long int	starving;
 
-	start = philo.ctxt->start;
-	starving = get_time() - philo.last_eat;
-	if (get_time() - philo.last_eat >= philo.ctxt->time_die)
+	start = philo->ctxt->start;
+	pthread_mutex_lock(&philo->ctxt->mtx_meal);
+	starving = get_time() - philo->last_eat;
+	pthread_mutex_unlock(&philo->ctxt->mtx_meal);
+	if (starving >= philo->ctxt->time_die)
 	{
-		writer("\U0001F480", "died", &philo, philo.ctxt);
+		writer("\U0001F480", "died", philo, philo->ctxt);
 		return (1);
 	}
 	return (0);
@@ -36,8 +38,10 @@ int	check_eat(t_philo *philo)
 	count = 0;
 	while (i < philo->ctxt->num_philo)
 	{
+		pthread_mutex_lock(&philo->ctxt->mtx_meal);
 		if (philo[i].num_eat >= philo->ctxt->num_eat)
 			count++;
+		pthread_mutex_unlock(&philo->ctxt->mtx_meal);
 		i++;
 	}
 	if (count < philo->ctxt->num_philo)
@@ -53,7 +57,7 @@ int	is_it_ok(t_data *context)
 	i = 0;
 	while (i < context->num_philo)
 	{
-		if (check_death(context->philo[i]))
+		if (check_death(&context->philo[i]))
 			return (1);
 		i++;
 	}

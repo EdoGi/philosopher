@@ -40,7 +40,9 @@ typedef struct s_data
 	int				num_eat;
 	pthread_t		*thrd;
 	pthread_mutex_t	*forks;
-	// pthread_mutex_t	write;
+	pthread_mutex_t	mtx_write;
+	pthread_mutex_t	mtx_meal;
+	pthread_mutex_t	mtx_death;
 	struct s_philo	*philo;
 	long int		start;
 	int				itsok;
@@ -88,12 +90,13 @@ int			parse_context(int ac, char **av, t_data *context);
 
 /* USER */
 // checker
-int			check_death(t_philo philo);
+int			check_death(t_philo *philo);
 int			check_eat(t_philo *philo);
 int			is_it_ok(t_data *context);
 // eater
 void		lock_forks(t_philo *philo);
 void		unlock_forks(t_philo *philo);
+void		mtx_eating(t_philo *philo, int i);
 int			eating(t_philo *philo);
 // routiniser
 void		*routine(void *philo);
