@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:31:41 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/03 15:02:52 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 16:00:19 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	init_context(int ac, char **av, t_data *context)
 	memset(context, 0, sizeof(&context));
 	if (parse_context(ac, av, context))
 	{
-		printf_error("Wrong Context !\n\n");
+		printf_error("Wrong Context !\n");
 		usage();
 		return (1);
 	}

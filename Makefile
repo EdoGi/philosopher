@@ -33,9 +33,9 @@ INC = ./include/philosopher.h
 NAME	= 	Philo
 
 CC		=	clang
-# CFLAGS	=	-Wall -Werror -Wextra -g -pthread
+CFLAGS	=	-Wall -Werror -Wextra -g -pthread
 # CFLAGS = -Wall -Wextra -Werror -pthread -g3 -fsanitize=thread
-CFLAGS = -Wall -Wextra -Werror -pthread -g3 -fsanitize=address
+# CFLAGS = -Wall -Wextra -Werror -pthread -g3 -fsanitize=address
 
 RM		=	rm -rf
 

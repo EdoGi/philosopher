@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:15:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/03 15:02:45 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:59:38 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // FIXME : Complete this function with all usages ;
 void	usage(void)
 {
-	printf("\tUSAGE :\nLaunch : ./Philo <number_of_philosophers> <time_to_die>");
+	printf("USAGE :\nLaunch : ./Philo <number_of_philosophers> <time_to_die>");
 	printf(" <time_to_eat> <time_to_sleep>");
 	printf(" <Optional:number_of_times_each_philosopher_must_eat>\n\n");
 }
@@ -66,7 +66,6 @@ int	the_end(t_data *context)
 	if (context)
 	{
 		memset(context, 0, sizeof(&context));
-		free (context);
 		context = NULL;
 	}
 	exit (0);

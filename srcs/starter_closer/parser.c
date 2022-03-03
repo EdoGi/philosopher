@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:21:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/03 15:12:57 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 18:59:18 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	printf_error(char *str)
 {
-	printf("%sERROR: %s\n%s", RED_BLINK, str, RESET);
+	printf("%sERROR:%s %s\n%s", RED_BLINK, RESET, str, RESET);
 }
 
 int	parse_error(int ac, char **av)
@@ -23,7 +23,7 @@ int	parse_error(int ac, char **av)
 	int	num;
 
 	i = 1;
-	while (i <= ac)
+	while (i < ac)
 	{
 		if (ft_isnumber(av[i]))
 		{
@@ -36,6 +36,7 @@ int	parse_error(int ac, char **av)
 			printf("=> %s is not a wrong digit\n", av[i]);
 			return (1);
 		}
+		i++;
 	}
 	return (0);
 }
