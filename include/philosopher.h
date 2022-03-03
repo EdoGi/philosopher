@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:49 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/02 02:01:47 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:12:56 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void		lock_forks(t_philo *philo);
 void		unlock_forks(t_philo *philo);
 int			eating(t_philo *philo);
 // routiniser
-int			routine(t_philo *philo);
+void		*routine(void *philo);
 int			thinking(t_philo *philo);
 int			sleeping(t_philo *philo);
 

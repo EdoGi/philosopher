@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/02 02:03:48 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:03:16 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 */
 
 // TODO : Check why I have to write all path to include
-#include "../include/philosopher.h"
+#include "philosopher.h"
 
 int	main(int ac, char **av)
 {

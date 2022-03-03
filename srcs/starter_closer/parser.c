@@ -6,13 +6,13 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:21:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/02 02:03:09 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:12:57 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/philosopher.h"
+#include "philosopher.h"
 
-void	printf_errors(char *str)
+void	printf_error(char *str)
 {
 	printf("%sERROR: %s\n%s", RED_BLINK, str, RESET);
 }

@@ -6,11 +6,11 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 01:05:06 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/02 02:03:02 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:03:04 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/philosopher.h"
+#include "philosopher.h"
 
 void	lock_forks(t_philo *philo)
 {

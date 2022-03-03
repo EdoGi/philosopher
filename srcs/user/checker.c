@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 23:01:23 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/02 02:02:29 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:14:00 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_death(t_philo philo)
 	starving = get_time() - philo.last_eat;
 	if (get_time() - philo.last_eat >= philo.ctxt->time_die)
 	{
-		writer("\U0001F480", "died", &philo, &philo.ctxt);
+		writer("\U0001F480", "died", &philo, philo.ctxt);
 		return (1);
 	}
 	return (0);
@@ -46,7 +46,7 @@ int	check_eat(t_philo *philo)
 		return (1);
 }
 
-int	it_is_ok(t_data *context)
+int	is_it_ok(t_data *context)
 {
 	int	i;
 

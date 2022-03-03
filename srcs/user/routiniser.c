@@ -6,25 +6,28 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 19:31:17 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/02 02:03:03 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:02:15 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/philosopher.h"
+#include "philosopher.h"
 
 // TODO : Create routine
-int	routine(t_philo *philo)
+void	*routine(void *arg)
 {
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
 	philo->last_eat = philo->ctxt->start;
 	if (philo->id % 2 == 0)
 		usleep(100 * philo->ctxt->num_philo);
 	while (philo->ctxt->itsok == 0)
 	{
-		if (think(philo))
+		if (thinking(philo))
 			return (0);
-		if (eat(philo))
+		if (eating(philo))
 			return (0);
-		if (sleep(philo))
+		if (sleeping(philo))
 			return (0);
 	}
 	return (0);

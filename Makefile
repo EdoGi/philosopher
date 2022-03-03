@@ -25,35 +25,36 @@ OBJS_B		=	$(addprefix $(SRCS_B_DIR), $(SRCS_B:.c=.o))
 
 # *-------- INCLUDE --------* 
 
-INCLUDES_DIR = -I ./include
-INC = ./include/philosophers.h
+INCLUDE_DIR = -I ./include
+INC = ./include/philosopher.h
 
 # *-------- GENERALS --------* 
 
+NAME	= 	Philo
+
 CC		=	clang
-CFLAGS	=	-Wall -Werror -Wextra -g -pthread
+# CFLAGS	=	-Wall -Werror -Wextra -g -pthread
 # CFLAGS = -Wall -Wextra -Werror -pthread -g3 -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -pthread -g3 -fsanitize=address
 
 RM		=	rm -rf
 
-NAME	= 	Philo
-
 # *-------- COMPILE --------* 
 
-%.o : %.c
-			@$(CC) $(CFLAGS) -pthread -o $@ -c $< $(INCLUDE_DIR)
+all	:		$(NAME)
 
-$(NAME):	$(OBJS)
+%.o : %.c
+			@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE_DIR)
+
+$(NAME):	$(OBJS) $(INC)
 			@$(CC) $(CFLAGS) $(OBJS) $(INCLUDE_DIR) -o $(NAME)
 			@echo "$(NAME) created"
  
-$(NAME)_bonus :	$(OBJS_B)
+$(NAME)_bonus :	$(OBJS_B) $(INC)
 			@$(CC) $(CFLAGS) $(OBJS_B) $(INCLUDE_DIR) -o $(NAME)_bonus
 			@echo "$(NAME)_bonus created"
 
 # *======== RULES ========* 
-
-all	:		${NAME}
 
 bonus:		${NAME}_bonus
 

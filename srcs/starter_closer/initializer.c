@@ -6,11 +6,11 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:31:41 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/02 02:03:12 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/03 15:02:52 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/philosopher.h"
+#include "philosopher.h"
 
 int	init_thread(t_data *context)
 {
@@ -70,7 +70,7 @@ int	init_philo(t_data *context)
 		return (1);
 	}
 	philo_set = context->philo;
-	memset(philo_set, 0, sizeof(philo_set));
+	memset(philo_set, 0, sizeof(&philo_set));
 	i = 0;
 	while (i < context->num_philo)
 	{
@@ -87,8 +87,8 @@ int	init_philo(t_data *context)
 
 int	init_context(int ac, char **av, t_data *context)
 {
-	memset(context, 0, sizeof(context));
-	if (parse_context(ac, av, &context))
+	memset(context, 0, sizeof(&context));
+	if (parse_context(ac, av, context))
 	{
 		printf_error("Wrong Context !\n\n");
 		usage();
