@@ -31,7 +31,7 @@ INC = ./include/philosopher.h
 
 # *-------- GENERALS --------* 
 
-NAME	= 	Philo
+NAME	= 	philo
 
 CC		=	clang
 CFLAGS	=	-Wall -Werror -Wextra -g -pthread
