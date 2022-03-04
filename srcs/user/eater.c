@@ -6,11 +6,18 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 01:05:06 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 19:47:16 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 22:17:49 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
+
+void	mtx_num_eat(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->ctxt->mtx_meal);
+	philo->num_eat--;
+	pthread_mutex_unlock(&philo->ctxt->mtx_meal);
+}
 
 int	meal_eating(t_philo *philo)
 {
@@ -27,7 +34,7 @@ int	meal_eating(t_philo *philo)
 			unlock_forks_right_hand(philo);
 		else
 			unlock_forks_left_hand(philo);
-		philo->num_eat--;
+		mtx_num_eat(philo);
 		return (0);
 	}
 	return (1);
@@ -56,13 +63,18 @@ int	eating(t_philo *philo)
 	start = philo->ctxt->start;
 	if (check_ok(philo))
 		return (1);
+	pthread_mutex_lock(&philo->ctxt->mtx_meal);
 	if (philo->ctxt->num_eat)
 	{
+		pthread_mutex_unlock(&philo->ctxt->mtx_meal);
 		if (meal_eating(philo))
 			return (1);
 	}
 	else
+	{
+		pthread_mutex_unlock(&philo->ctxt->mtx_meal);
 		infinite_eating(philo);
+	}
 	return (0);
 }
 

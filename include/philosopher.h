@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:49 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 20:06:45 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 22:15:57 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void		lock_forks_left_hand(t_philo *philo);
 void		unlock_forks_right_hand(t_philo *philo);
 void		unlock_forks_left_hand(t_philo *philo);
 void		mtx_eat_timer(t_philo *philo);
+void		mtx_num_eat(t_philo *philo);
 int			eating(t_philo *philo);
 // routiniser
 void		*routine(void *philo);

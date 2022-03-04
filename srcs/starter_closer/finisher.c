@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:15:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 15:50:36 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 21:57:58 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	finish_diner(t_data *context)
 				printf_error("pthread join");
 			i++;
 		}
+		free(context->thrd);
 	}
 	clear_table(context);
 }

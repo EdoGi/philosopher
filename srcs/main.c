@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 20:19:43 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 22:34:05 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,7 @@ int	main(int ac, char **av)
 		finish_diner(&context);
 		return (1);
 	}
-	while (context.end == 0)
-	{
-		context.end = check_end(&context);
-		usleep(1000);
-	}
+	check_end(&context);
 	finish_diner(&context);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 23:01:23 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 20:19:08 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 22:50:49 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	is_dead(t_philo *philo)
 	philo->ctxt->end = 1;
 	die_time = get_time() - philo->ctxt->start;
 	pthread_mutex_unlock(&philo->ctxt->mtx_death);
-	// pthread_mutex_lock(&philo->ctxt->mtx_write);
+	pthread_mutex_lock(&philo->ctxt->mtx_write);
 	printf("\U0001F480 %ld ms : Philo %d died\n", die_time, philo->id);
-	// pthread_mutex_unlock(&philo->ctxt->mtx_write);
+	pthread_mutex_unlock(&philo->ctxt->mtx_write);
 	return (0);
 }
 
@@ -89,6 +89,8 @@ int	check_end(t_data *context)
 	i = 0;
 	while (i < context->num_philo)
 	{
+		if (check_ok(&context->philo[i]))
+			return (1);
 		if (context->num_eat)
 		{
 			if (check_eat(context))
@@ -100,6 +102,11 @@ int	check_end(t_data *context)
 		if (check_death(context))
 			return (1);
 		i++;
+		if (i == context->num_philo)
+		{
+			i = 0;
+			usleep(10000);
+		}
 	}
 	return (0);
 }

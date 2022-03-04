@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 12:32:29 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 20:19:36 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 22:15:03 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,3 @@ void	mtx_eat_timer(t_philo *philo)
 	// printf("\tlast eat is %ld\n", philo->last_eat);
 	pthread_mutex_unlock(&philo->ctxt->mtx_meal);
 }
-
-/* 
-void	mtx_num_eat(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->ctxt->mtx_meal);
-	philo->num_eat--;
-	pthread_mutex_unlock(&philo->ctxt->mtx_meal);
-}
-*/
