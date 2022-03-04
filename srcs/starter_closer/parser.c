@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:21:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/03 18:59:18 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 16:29:59 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	parse_context(int ac, char **av, t_data *context)
 		context->time_die = ft_atoi(av[2]);
 		context->time_eat = ft_atoi(av[3]);
 		context->time_sleep = ft_atoi(av[4]);
+		context->num_eat = 0;
+		context->end = 0;
 		if (ac == 6)
 		{
 			if (ft_atoi(av[5]) <= 0)

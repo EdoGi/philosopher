@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/03 18:48:52 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 18:41:07 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,14 @@ int	main(int ac, char **av)
 	if (init_context(ac, av, &context))
 	{
 		printf_error("initializer failed");
-		return (the_end(&context));
+		finish_diner(&context);
+		return (1);
 	}
-	while (context.itsok == 0)
-		context.itsok = is_it_ok(&context);
+	while (context.end == 0)
+	{
+		context.end = check_end(&context);
+		usleep(1000);
+	}
 	finish_diner(&context);
 	return (0);
 }

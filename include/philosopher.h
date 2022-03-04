@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:49 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/03 15:12:56 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 18:24:43 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define WHITE "\033[0;37m"
 # define RESET "\033[0m"
 
-// FIXME : Complete context structure
 typedef struct s_data
 {
 	int				num_philo;
@@ -45,10 +44,9 @@ typedef struct s_data
 	pthread_mutex_t	mtx_death;
 	struct s_philo	*philo;
 	long int		start;
-	int				itsok;
+	int				end;
 }	t_data;
 
-// FIXME : Complete philo structure
 typedef struct s_philo
 {
 	int				id;
@@ -90,13 +88,16 @@ int			parse_context(int ac, char **av, t_data *context);
 
 /* USER */
 // checker
-int			check_death(t_philo *philo);
-int			check_eat(t_philo *philo);
-int			is_it_ok(t_data *context);
+int			check_ok(t_philo *philo);
+int			check_death(t_data *context);
+int			check_eat(t_data *context);
+int			check_end(t_data *context);
 // eater
-void		lock_forks(t_philo *philo);
-void		unlock_forks(t_philo *philo);
-void		mtx_eating(t_philo *philo, int i);
+void		lock_forks_right_hand(t_philo *philo);
+void		lock_forks_left_hand(t_philo *philo);
+void		unlock_forks_right_hand(t_philo *philo);
+void		unlock_forks_left_hand(t_philo *philo);
+void		mtx_eat_timer(t_philo *philo);
 int			eating(t_philo *philo);
 // routiniser
 void		*routine(void *philo);

@@ -11,6 +11,7 @@ SRCS		=	\
 				user/routiniser.c				\
 				user/checker.c					\
 				user/eater.c					\
+				user/mtx_eater.c				\
 				manager/utiliser.c				\
 				manager/writer.c				\
 				manager/timer.c					\
