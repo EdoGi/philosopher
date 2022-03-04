@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:15:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 21:57:58 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 23:48:01 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	quit_table(t_data *context)
 	int	i;
 
 	i = 0;
-	if (context && context->num_philo && context->philo)
+	if (context && context->num_philo)
 	{
 		while (i < context->num_philo)
 		{
@@ -48,13 +48,12 @@ void	quit_table(t_data *context)
 	the_end(context);
 }
 
-/* FIXME : context->forks doesn't work ; how to fix ? l.57 */
 void	clear_table(t_data *context)
 {
 	int	i;
 
 	i = 0;
-	if (context && context->num_philo && context->forks)
+	if (context && context->num_philo)
 	{
 		while (i < context->num_philo)
 		{
@@ -70,7 +69,6 @@ void	clear_table(t_data *context)
 	quit_table(context);
 }
 
-/* FIXME : context->thrd doesn't work ; how to fix ? l.79 */
 void	finish_diner(t_data *context)
 {
 	int	i;

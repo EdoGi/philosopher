@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 19:31:17 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 22:53:24 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 23:37:58 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	sleeping(t_philo *philo)
 	return (0);
 }
 
-// FIXME : FIX routine
 void	*routine(void *arg)
 {
 	t_philo	*philo;
@@ -57,7 +56,6 @@ void	*routine(void *arg)
 	}
 	while (check_ok(philo) == 0)
 	{
-		// printf("after thinking time philo %d is %ld\n", philo->id, get_time());
 		if (eating(philo))
 			return (0);
 		if (sleeping(philo))

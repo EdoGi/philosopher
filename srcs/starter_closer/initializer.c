@@ -6,13 +6,12 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:31:41 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 20:18:58 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 23:38:44 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-/* TODO : Check l.30 on routine */
 int	init_thread(t_data *context)
 {
 	int	i;
@@ -28,7 +27,6 @@ int	init_thread(t_data *context)
 	while (i < context->num_philo)
 	{
 		context->philo[i].last_eat = context->start;
-		// printf("start last eat for philo[%d] is %ld\n", context->philo[i].id, context->philo[i].last_eat);
 		if (pthread_create(&context->thrd[i], NULL, &routine, \
 			&context->philo[i]) != 0)
 		{
@@ -84,11 +82,9 @@ int	init_philo(t_data *context)
 	{
 		philo_set[i].id = i + 1;
 		philo_set[i].right_fork = &(context->forks[i]);
-		// printf("philo %d r_fork is %p\n", philo_set[i].id, &context->forks[i]);
 		if (context->num_philo > 1)
 			philo_set[i].left_fork = &(context->forks[(i + 1) \
 				% context->num_philo]);
-		// printf("philo %d l_fork is %p\n", philo_set[i].id, &context->forks[(i + 1) % context->num_philo]);
 		philo_set[i].ctxt = context;
 		philo_set[i].num_eat = context->num_eat;
 		i++;

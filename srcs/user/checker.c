@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 23:01:23 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 23:30:57 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 23:42:18 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	check_end(t_data *context)
 	i = 0;
 	while (i < context->num_philo)
 	{
-		if (check_ok(&context->philo[i]))
+		if (check_death(context) && check_ok(&context->philo[i]))
 			return (1);
 		if (context->num_eat)
 		{
@@ -103,8 +103,6 @@ int	check_end(t_data *context)
 				return (1);
 			}
 		}
-		if (check_death(context))
-			return (1);
 		i++;
 		if (i == context->num_philo)
 		{

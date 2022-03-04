@@ -6,15 +6,11 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:55 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 22:34:05 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 23:38:12 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* TODO : GENERAL
-	philo are thread ;
-	they have relative forks(mutex);
-	for each I do routine :
-	
 		routine
 	each odd philo start eat for <time to eat>
 		eat :
