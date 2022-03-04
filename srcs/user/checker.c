@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 23:01:23 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 22:50:49 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 23:30:57 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ int	check_eat(t_data *context)
 	count = 0;
 	while (i < context->num_philo)
 	{
+		pthread_mutex_lock(&context->mtx_meal);
 		if (context->philo[i].num_eat == 0)
 			count++;
+		pthread_mutex_unlock(&context->mtx_meal);
 		i++;
 	}
 	if (count < context->num_philo)
@@ -95,7 +97,9 @@ int	check_end(t_data *context)
 		{
 			if (check_eat(context))
 			{
+				pthread_mutex_lock(&context->mtx_write);
 				printf("Everybody Miamiamed !\n");
+				pthread_mutex_unlock(&context->mtx_write);
 				return (1);
 			}
 		}
