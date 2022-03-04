@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 17:27:49 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 18:24:43 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/04 20:06:45 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct s_philo
 	int				id;
 	int				num_eat;
 	long int		last_eat;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 	t_data			*ctxt;
 }	t_philo;
 
