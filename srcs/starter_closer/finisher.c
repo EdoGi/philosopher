@@ -6,18 +6,18 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:15:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 23:48:01 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/05 00:06:48 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-// FIXME : Complete this function with all usages ;
 void	usage(void)
 {
 	printf("USAGE :\nLaunch : ./Philo <number_of_philosophers> <time_to_die>");
 	printf(" <time_to_eat> <time_to_sleep>");
 	printf(" <Optional:number_of_times_each_philosopher_must_eat>\n\n");
+	printf(" All Parameters should be superior to 0 !\n\n");
 }
 
 int	the_end(t_data *context)
