@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 19:31:17 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 23:37:58 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/05 03:45:19 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	thinking(t_philo *philo)
 	t_eat = philo->ctxt->time_eat;
 	t_die = philo->ctxt->time_die;
 	t_sleep = philo->ctxt->time_sleep;
-	if (check_ok(philo) && check_eat(philo->ctxt))
+	if (check_ok(philo) || check_eat(philo->ctxt))
 		return (1);
 	usleep((t_die - t_eat - t_sleep) / 2 * 1000);
 	if (!check_eat(philo->ctxt))

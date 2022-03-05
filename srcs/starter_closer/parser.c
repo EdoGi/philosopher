@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:21:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/04 23:37:18 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/05 03:45:36 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	parse_error(int ac, char **av)
 			return (1);
 		}
 		num = ft_atoi(av[i]);
-		if (num > INT_MAX || num <= 0 || ft_strlen(av[i]) > 11)
+		if (num > INT_MAX || num <= 0 || ft_strlen(av[i]) >= 11)
 		{
 			printf("=> %s is a wrong digit\n", av[i]);
 			return (1);
