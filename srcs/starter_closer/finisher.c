@@ -6,7 +6,7 @@
 /*   By: egiacomi <egiacomi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:15:36 by egiacomi          #+#    #+#             */
-/*   Updated: 2022/03/05 00:06:48 by egiacomi         ###   ########.fr       */
+/*   Updated: 2022/03/05 04:38:43 by egiacomi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	the_end(t_data *context)
 		memset(context, 0, sizeof(&context));
 		context = NULL;
 	}
-	exit (0);
 	return (0);
 }
 
